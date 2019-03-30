@@ -1,6 +1,6 @@
 <nz-layout>
   <!-- side nav Bar -->
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [ngClass]="{'filled':Isloading}" class="" [nzWidth]="width" [nzReverseArrow]="isReverseArrow">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed"  class="sideNav" [nzWidth]="width" [nzReverseArrow]="isReverseArrow">
     <div class="logo">
       <img src="https://www.afaqs.com/all/news/images/news_story_grfx/2017/51528_1_home_big.jpg" alt="">
     </div>
@@ -43,7 +43,7 @@
       </div>
 
       <!-- table section -->
-      <div style="padding:24px; background: #fff; min-height: 360px;">
+      <div style="padding:24px; background: #fff; min-height: 100vh;">
             
            
             <nz-table #filterTable [nzData]="listOfDisplayData" [nzLoading]= 'Isloading'>

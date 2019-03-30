@@ -34,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
   ngOnInit() {
+    // getting data from service
     this.subscription = this.dataService.getMessage().subscribe(data => {
       if (data) {
         this.listOfData = data;
@@ -48,7 +49,6 @@ export class AppComponent implements OnInit, OnDestroy {
         })), 'value');
         this.totalEntries = data.length;
         this.Isloading = false;
-        console.log(this.totalEntries);
       }
 
     });
@@ -57,6 +57,8 @@ export class AppComponent implements OnInit, OnDestroy {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
   }
+
+  // sending sort key
   sort(sortName: string, value: string): void {
     this.sortName = sortName;
     this.sortValue = value;
@@ -69,6 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
 
+  // filtering and sorting function
   search(listOfNameChild: string[]): void {
     this.listOfNameChild = listOfNameChild;
     const filterFunc = (item: any) =>

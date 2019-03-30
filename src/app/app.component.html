@@ -1,4 +1,5 @@
 <nz-layout>
+  <!-- side nav Bar -->
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [ngClass]="{'filled':Isloading}" class="" [nzWidth]="width" [nzReverseArrow]="isReverseArrow">
     <div class="logo">
       <img src="https://www.afaqs.com/all/news/images/news_story_grfx/2017/51528_1_home_big.jpg" alt="">
@@ -17,7 +18,10 @@
       
     </ul>
   </nz-sider>
+
+
   <nz-layout>
+
     <nz-header style="background: #fff; padding:0;">
     <!-- Course List -->
     </nz-header>
@@ -26,6 +30,8 @@
         <nz-breadcrumb-item>Home</nz-breadcrumb-item>
         <nz-breadcrumb-item>Courses</nz-breadcrumb-item>
       </nz-breadcrumb>
+
+      <!-- search section -->
       <div class="searchWrapper">
           <nz-input-group nzSearch nzSize="large"  [nzAddOnAfter]="suffixButton">
               <input type="text" id="#searchTerm"
@@ -35,6 +41,8 @@
               <button nz-button nzType="primary" nzSize="large" nzSearch id="filterBtn">Search</button>
           </ng-template>
       </div>
+
+      <!-- table section -->
       <div style="padding:24px; background: #fff; min-height: 360px;">
             
            

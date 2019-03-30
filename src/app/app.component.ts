@@ -11,10 +11,6 @@ export class AppComponent implements OnInit, OnDestroy {
   isCollapsed = false;
   isReverseArrow = false;
   width = 200;
-  listOfSearchName: string[] = [];
-  listOfSearchAddress: string[] = [];
-  listOfFilterName = [];
-  listOfFilterAddress = [];
   listOfData: any = [
   ];
   Isloading = true;

@@ -1,0 +1,29 @@
+.logo {
+    height: 32px;
+    background: transparent;
+    margin: 16px;
+    text-align: center;
+  }
+
+ .logo img{
+    height: fill;
+}
+
+.searchWrapper{
+    width: 30%;
+    float: right;
+    margin: 10px 20px;
+}
+.inline-box{
+    display: -webkit-inline-box;
+}
+
+.extras{
+    min-width: 90px;
+}
+
+#filterBtn{
+    background: #001529;
+    border-color: #001529;
+    color: rgba(255,255,255,.65);
+}

@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.ant-table-filter-dropdown .ant-dropdown-menu {
+    height: 200px;
+    overflow: auto;
+}
+
+#filterBtn{
+    background: #001529;
+    border-color: #001529;
+    color: rgba(255,255,255,.65);
+}

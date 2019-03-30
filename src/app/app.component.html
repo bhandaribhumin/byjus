@@ -1,21 +1,112 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<nz-layout>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" class="filled" [nzWidth]="width" [nzReverseArrow]="isReverseArrow">
+    <div class="logo">
+      <img src="https://www.afaqs.com/all/news/images/news_story_grfx/2017/51528_1_home_big.jpg" alt="">
+    </div>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+        <li nz-menu-item>
+            <span><i nz-icon nzType="read" nzTheme="outline"></i><span class="nav-text">Courses</span></span>
+        </li>
+      <li nz-submenu>
+        <span title><i nz-icon type="user"></i><span class="nav-text">Settings</span></span>
+        <ul>
+          <li nz-menu-item>Account Settings</li>
+          <li nz-menu-item>Course Setting</li>
+        </ul>
+      </li>
+      
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header style="background: #fff; padding:0;">
+    <!-- Course List -->
+    </nz-header>
+    <nz-content style="margin:0 16px;">
+      <nz-breadcrumb style="margin:16px 0;">
+        <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Courses</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div class="searchWrapper">
+          <nz-input-group nzSearch nzSize="large"  [nzAddOnAfter]="suffixButton">
+              <input type="text" id="#searchTerm"
+               [(ngModel)]="searchTerm" nz-input placeholder="input search text" />
+          </nz-input-group>
+          <ng-template #suffixButton>
+              <button nz-button nzType="primary" nzSize="large" nzSearch id="filterBtn">Search</button>
+          </ng-template>
+      </div>
+      <div style="padding:24px; background: #fff; min-height: 360px;">
+            
+           
+            <nz-table #filterTable [nzData]="listOfDisplayData" [nzLoading]= 'Isloading'>
+                
+              <thead>
+                <tr>
+                  <th
+                    nzShowSort
+                    [(nzSort)]="mapOfSort['Course Name']"
+                    (nzSortChange)="sort('Course Name', $event)"
+                  >
+                  Course Name
+                  </th>
+                  <th nzShowSort [(nzSort)]="mapOfSort['Parent Subject']" (nzSortChange)="sort('Parent Subject', $event)">Parent Subject</th>
+                  <th
+                    nzShowSort
+                    nzShowFilter
+                    [(nzSort)]="mapOfSort['Child Subject']"
+                    (nzSortChange)="sort('Child Subject', $event)"
+                    [nzFilters]="listOfFilterChild"
+                    (nzFilterChange)="search($event)"
+                  >
+                  Child Subject
+                  </th>
+                  <th
+                    nzShowSort
+                    [(nzSort)]="mapOfSort['Provider']"
+                    (nzSortChange)="sort('Provider', $event)"
+                  >
+                  Provider
+                  </th>
 
-<router-outlet></router-outlet>
+                  <th
+                    nzShowSort
+                    [(nzSort)]="mapOfSort['Next Session Date']"
+                    (nzSortChange)="sort('Next Session Date', $event)"
+                  >
+                  Next Session
+                  </th>
+                  
+                  <!-- <th
+                  >
+                  Institutions
+                  </th> -->
+                  <th>
+                  Extras
+                  </th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of filterTable.data | search : searchTerm">
+                  <td>{{ data['Course Name'] }}</td>
+                  <td>{{ data['Parent Subject'] }}</td>
+                  <td>{{ data['Child Subject'] }}</td>
+                  <td>{{data['Provider']}}</td>
+                  <td>{{ data['Next Session Date'] }}</td>
+                  <!-- <td>{{data.Universities ? data.Universities.Institutions : '-'}}</td> -->
+                  <td class="extras">
+                    <a *ngIf="data.Url" href="{{data.Url}}">
+                        <i nz-icon nzType="link" nzTheme="outline"></i> Link
+                    </a> <br>
+                    <a *ngIf="data['Video(Url)']" href="{{data['Video(Url)']}}">
+                        <i nz-icon nzType="youtube" nzTheme="outline"></i> Video
+                    </a>
+                  </td>
+                  
+                </tr>
+              </tbody>
+            </nz-table>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

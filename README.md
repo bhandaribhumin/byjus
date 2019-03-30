@@ -1,6 +1,8 @@
 # Byjus
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+demo url: http://flawless-hour.surge.sh/
+
+demo video: https://www.useloom.com/share/44883b90cff842fbbe5294c3dcc0fa46
 
 ## Development server
 

@@ -5,7 +5,7 @@
     text-align: center;
   }
 
- .logo img{
+ .filled, .logo img{
     height: fill;
 }
 

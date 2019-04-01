@@ -1,6 +1,6 @@
 # Byjus
 
-demo url: http://chivalrous-card.surge.sh/
+demo url: http://courageous-kitten.surge.sh/
 
 demo video: https://www.useloom.com/share/44883b90cff842fbbe5294c3dcc0fa46
 

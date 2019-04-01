@@ -46,7 +46,7 @@
       <div style="padding:24px; background: #fff; min-height: 100vh;">
             
            
-            <nz-table #filterTable [nzData]="listOfDisplayData" [nzLoading]= 'Isloading'>
+            <nz-table #filterTable [nzData]="listOfDisplayData | search : searchTerm" [nzLoading]= 'Isloading'>
                 
               <thead>
                 <tr>
@@ -95,7 +95,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let data of filterTable.data | search : searchTerm">
+                <tr *ngFor="let data of filterTable.data">
                   <td>{{ data['Course Name'] }}</td>
                   <td>{{ data['Parent Subject'] }}</td>
                   <td>{{ data['Child Subject'] }}</td>
